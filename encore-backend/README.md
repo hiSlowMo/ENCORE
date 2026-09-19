@@ -44,7 +44,25 @@ Demo accounts:
 - `checker / 123`
 - `sysadmin / 123`
 
-## Docker Preview
+## Check-In Window Regression Tests
+
+The documented ordinary check-in interval is inclusive from two hours before
+the scheduled start through the scheduled end. Run the focused boundary contract:
+
+```sh
+mvn -Dtest=CheckInWindowContractTest test
+```
+
+This covers both bound and unbound schedule verification plus schedule-list
+availability at seven fixed instants (21 parameterized test invocations). It
+also checks that rejected attempts do not mark tickets as checked in or publish
+dashboard refresh events. Mapper and publisher dependencies are mocked; it is
+not an HTTP, database or transaction integration test. Administrator force
+check-in is a separate correction path and is intentionally outside this test.
+
+Run the complete existing backend suite with `mvn test`.
+
+## Container Preview
 
 The backend Docker image is normally built through the root full compose file:
 
