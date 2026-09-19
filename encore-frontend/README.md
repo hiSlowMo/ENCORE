@@ -21,7 +21,21 @@ Open `http://localhost:5173`.
 
 For production builds, leave `VITE_API_BASE_URL` unset or set it to `/` when the app is served by the included Nginx config. The browser will call same-origin `/api/...` and `/ws`, which Nginx proxies to the backend container.
 
-## Build
+## Credential Policy Regression Tests
+
+After installing dependencies, run the standalone policy tests (Node.js 20+):
+
+```sh
+npm test
+```
+
+The tests load the real TypeScript policy using the existing compiler, without a browser,
+backend, database or new test dependency. They cover ISO control-character rejection,
+non-control Unicode inputs, nickname boundaries and existing username/password behavior.
+Matching backend cases are in `CredentialPolicyTest`, run with `mvn test` from `encore-backend`.
+These checks do not claim full Unicode normalization or end-to-end registration coverage.
+
+## Production Build
 
 ```powershell
 npm run build
