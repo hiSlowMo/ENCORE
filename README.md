@@ -105,6 +105,7 @@ cd D:\ENCORE\encore-backend
 mvn test
 
 cd D:\ENCORE\encore-frontend
+npm test
 npm run build
 ```
 

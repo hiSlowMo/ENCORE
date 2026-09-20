@@ -62,6 +62,6 @@ export function validateDisplayName(value: string, messages: {
 }) {
   const displayName = value.trim()
   if (displayName.length < 2 || displayName.length > 32) return messages.displayNameRule
-  if (/[\u0000-\u001F\u007F]/.test(displayName)) return messages.displayNameControl
+  if (/[\u0000-\u001F\u007F-\u009F]/.test(displayName)) return messages.displayNameControl
   return ''
 }
