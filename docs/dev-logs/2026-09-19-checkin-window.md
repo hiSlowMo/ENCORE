@@ -32,11 +32,23 @@ included in the normal green test suite.
 
 This is an in-process service contract with Mockito collaborators. It does not
 exercise HTTP, database locks/transactions, a real host hook, openEuler or a live
-user. It does not add general Java support to AET. Independent review of this new
-test suite was not run; the available review agent hit its usage limit during the
-preceding nickname-test task, so this suite remains pending independent review.
+user. It does not add general Java support to AET. At the initial local handoff,
+independent review was deferred because the review agent had reached its usage
+limit. A subsequent independent Astra review completed the source/test,
+requirement-provenance, mutation-evidence and retained-hash checks with no
+blocking findings in the declared scope. The reviewer did not rerun Java or the
+mutants, and this agent review is not maintainer approval. The earlier pending
+status is historical, not the current review state.
 
 The normal `mvn test` run on this test-only branch passed 158 tests across 18
 classes, with zero failures, errors or skips (Windows, Java 21.0.4 targeting Java
-17, Maven 3.9.10). These results are separate from the nickname branch's 140 tests;
-the two branches have not been combined or treated as one tested revision.
+17, Maven 3.9.10). These results are separate from the nickname branch's 140 tests
+and describe the initial single-branch validation, not a combined total.
+
+Subsequently, the two published PR heads were merged in a new local clone and
+validated at `f863af4958595cb2667aa67c7686bdd6ac50d5d4`: frontend 92 tests, frontend
+type check/build, and backend 161 tests across 19 classes all passed without
+failures or skips. The combined tree is
+`3ee886f1d87920e1d376fa9d94d3b126bd781db0`. This is a separate local integration
+run, not the sum of the earlier counts and not a remote CI run; its fixed source
+identity and scope are also recorded in the PR descriptions.
